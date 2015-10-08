@@ -2,8 +2,10 @@
 	position: relative;
 	min-height: 300px;
 	display: block;
+	border: 1px solid #AAAAAA;
+	margin: 20px;
 }
-
+/*
 #chart-div > div {
 	position: absolute;
 	bottom: 0px;
@@ -20,7 +22,7 @@
 	vertical-align: bottom;
 	width: 25px;
 }
-
+*/
 rect {
 	fill: #EC530A;
 }
@@ -29,4 +31,27 @@ rect {
 	font-size: 8px;
 	fill: white;
 	text-anchor: middle;
+}
+
+/* @link: https://css-tricks.com/snippets/css/css-triangle/ */
+.circle {
+	/*background-color: gray;*/
+	height: 50px;
+	width: 50px;
+	/*border-radius: 50px;*/
+	display: inline-block;
+	top: 40%;
+	position: absolute;
+	border-top: 50px solid transparent;
+	border-bottom: 50px solid transparent;
+}
+
+#next {
+	right: -55px;
+	border-left: 20px solid blue;
+}
+
+#prev {
+	left: -55px;
+	border-right: 20px solid blue;
 }
