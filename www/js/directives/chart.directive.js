@@ -79,19 +79,35 @@ app
 								.datum(val)
 								.attr("class", "line")
 								.attr("d", line);
+
+						svg.selectAll("circle")
+							.data(val, function(d) {
+								return d.$value + d.$id;
+							})
+							.enter().append("circle")
+							.attr("cy", function(d) {
+								return y(d.$value);
+							})
+							.attr("cx", function(d) {
+								return x(new Date(d.$id));
+							})
+							.attr("r", function() {
+								return 2;
+							})
+							.attr("class", "click-circle");
 				}
 
 
-				scope.$watch('clickArray', function(val) {
+				scope.$watchCollection('clickArray', function(val) {
 					if(val && !!val.length) { // is not undefined and length greater than 0
 						// initial render
 						drawChart(val);
 					}
-				}, true);
+				});
 
 
 				scope.$watch('choice', function(val) {
-					if(val === 'month') { // is not undefined and length greater than 0
+					if(val === 'month') {
 						scope.updateClicksArray(moment().startOf('month'), moment().endOf('month'));
 					} else {
 						scope.updateClicksArray();
