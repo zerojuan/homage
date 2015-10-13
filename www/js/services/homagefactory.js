@@ -40,9 +40,13 @@ app
           console.log('Done setting to database');
         });
       },
-      getClicks: function(uuid, max, callback){
-        var obj = ref.child('clickerz/'+uuid+'/clicks').orderByKey().limitToFirst(max);
-        var clickArray = $firebaseArray(obj);
+      getClicks: function(uuid, start, end, callback){
+        // var obj = ref.child('clickerz/'+uuid+'/clicks').orderByKey().limitToFirst(max);
+        var obj = ref.child('clickerz/'+uuid+'/clicks')
+                      .orderByKey()
+                      .startAt(start.format('MM-DD-YYYY').toString())
+                      .endAt(end.format('MM-DD-YYYY').toString()),
+            clickArray = $firebaseArray(obj);
         return callback(clickArray);
       }
       // setClickCount: function(click) { // function when 'Click Me!' button is clicked
